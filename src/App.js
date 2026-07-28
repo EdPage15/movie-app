@@ -2,13 +2,18 @@
 // https://www.omdbapi.com/?apikey=b561df05&s=
 
 import React from 'react';
-import Home from 'Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
