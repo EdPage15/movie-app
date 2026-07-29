@@ -109,6 +109,19 @@ h1 {
   flex-wrap: wrap;
 }
 
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.row__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .movie {
   width: 310px;
   height: 460px;
@@ -185,6 +198,138 @@ h1 {
 .movie:hover div:nth-of-type(1) {
   opacity: 1;
 }
+
+
+
+
+nav {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #242729;
+  position: relative;
+}
+
+.nav__container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+}
+
+.logo {
+  height: auto;
+  
+}
+
+.btn__menu {
+  background-color: transparent;
+  font-size: 32px;
+  border: none;
+  color: #7342d6;
+  display: none;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px;
+  color: #7342d6;
+}
+
+.nav__list {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.movie__selected {
+  display: flex;
+}
+
+.movie__selected--description {
+  width: 60%;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.movie__summary {
+  margin-bottom: 16px;
+}
+
+.movie__selected--title,
+.movie__summary--title,
+.movie__selected--rated,
+.movie__selected--released {
+  margin-bottom: 8px;
+  color: rgba(249, 211, 180, 1);
+}
+
+.movie__selected--runtime,
+.movie__summary--para {
+  margin-bottom: 16px;
+  color: rgba(249, 211, 180, 1);
+}
+
+
+
+
+/* 
+
+FOOTER
+
+*/
+
+footer {
+  background-color: #242424;
+}
+
+.footer__logo {
+  display: flex;
+}
+
+.footer__logo--img {
+  width: 160px;
+  filter: grayscale(1) invert(1);
+}
+
+.footer__link,
+.footer__copyright {
+  color: #fff;
+}
+
+.footer__list {
+  margin: 20px 0 24px 0;
+}
+
+.footer__link {
+  padding: 0 8px;
+}
+
+
 
 @media screen and (max-width: 600px) {
   .app {

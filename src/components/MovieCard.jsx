@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ movie: { imbdID, Year, Poster, Title, Type } }) => {
+    let navigate = useNavigate();
+    
     return (
-        <div className="movie" key={imbdID}>
+        <div className="movie" key={imbdID} onClick={() => navigate(`${Title}`)}>
             <div>
                 <p>{Year}</p>
             </div>
