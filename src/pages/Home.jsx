@@ -49,7 +49,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        fetchMovies();
+        fetchMovies("fast");
     }, [title]);
 
     return (
@@ -63,8 +63,10 @@ const Home = () => {
                         placeholder="Search for movies"
                     />
                     <button onClick={() => onSearch(searchTitle)}>Enter</button>
-                    <select id="filter" onchange={filterMovies()}>
-                        <option value="" disabled selected>sort</option>
+                </div>
+                <div className="search__filter">
+                    <select id="filter" onChange={() => filterMovies()}>
+                        <option value="" disable selected>sort</option>
                         <option value="A_TO_Z">Alphabetical A to Z</option>
                         <option value="Z_TO_A">Alphabetical Z to A</option>
                     </select>
