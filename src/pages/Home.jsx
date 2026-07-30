@@ -13,6 +13,7 @@ const Home = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTitle, setSearchTitle] = useState(title);
+    const [filteredMovies, setFilteredMovies] = useState([]);
 
     function onSearch() {
         fetchMovies(searchTitle)
@@ -24,22 +25,26 @@ const Home = () => {
             `${API_URL}&s=${title}`
         );
         setMovies(data.Search || []);
+        setFilteredMovies(data.Search || []);
         setLoading(false);
-        console.log(data);
+        
     
-        function filterMovies(filter) {
-            let sortingList = [...data];
-            if (filter === "A_TO_Z") {
-                sortingList.sort((a, b) => a.title.localeCompare(b.title))
-            }
-            else if (filter === "Z_TO_A") {
-                sortingList.sort((a, b) => b.title.localeCompare(a.title))
-            }
-        }
     }
 
-    function filterMovies() {
-        fetchMovies();
+    function sortMovies(filter) {
+        let sortingList = [...filteredMovies];
+        if (filter === "A_TO_Z") {
+            sortingList.sort((a, b) => a.Title.localeCompare(b.Title))
+        }
+        else if (filter === "Z_TO_A") {
+            sortingList.sort((a, b) => b.Title.localeCompare(a.Title))
+        }
+        console.log(sortingList)
+        setFilteredMovies(sortingList);
+    }
+
+    function filterMovies(event) {
+        sortMovies(event.target.value);
     }
 
     function onSearchKeyPress(key) {
@@ -65,7 +70,7 @@ const Home = () => {
                     <button onClick={() => onSearch(searchTitle)}>Enter</button>
                 </div>
                 <div className="search__filter">
-                    <select id="filter" onChange={() => filterMovies()}>
+                    <select id="filter" onChange={(event) => filterMovies(event)}>
                         <option value="" disable selected>sort</option>
                         <option value="A_TO_Z">Alphabetical A to Z</option>
                         <option value="Z_TO_A">Alphabetical Z to A</option>
@@ -85,7 +90,7 @@ const Home = () => {
             )) 
             : 
                 <div className="container">
-                    {movies.map((movie) => (
+                    {filteredMovies.map((movie) => (
                         <MovieCard movie={movie} />
                     ))}
                 </div>
