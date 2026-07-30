@@ -73,7 +73,7 @@ const Home = () => {
                 </div>
             </div>
             {loading ? 
-                new Array(9).fill(0).map((_, imdbID) => (
+                new Array(20).fill(0).map((_, imdbID) => (
                 <div className="movie" key={imdbID}>
                     <div className="movie__title">
                         <div className="movie__title--skeleton"></div>
