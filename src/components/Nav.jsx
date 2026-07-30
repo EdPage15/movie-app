@@ -5,14 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Nav = ({ numberOfItems }) => {
     let navigate = useNavigate();
 
-    function openMenu() {
-        document.body.classList += " menu--open";
-    }
-
-    function closeMenu() {
-        document.body.classList.remove("menu--open");
-    }
-
     return (
         <nav>
             <div className="nav__container">
@@ -29,9 +21,6 @@ const Nav = ({ numberOfItems }) => {
                             Home
                         </Link>
                     </li>
-                    <button className="btn__menu" onClick={openMenu}>
-                        <FontAwesomeIcon icon="bars" />
-                    </button>
                 </ul>
             </div>
         </nav>
