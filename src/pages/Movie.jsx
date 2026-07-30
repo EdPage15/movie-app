@@ -5,20 +5,20 @@ import { useParams } from 'react-router-dom';
 const API_URL = "https://www.omdbapi.com/?apikey=b561df05";
 
 const Movie = () => {
-    const{ title } = useParams();
+    const { imdbID } = useParams();
     const [data, setData] = useState(null)
-    
-    async function fetchMovies() {
-        const { data } = await axios.get(
-            `${API_URL}&t=${title}`
-        );
-        setData(data)
-        console.log(data)
-    }
 
     useEffect(() => {
+        async function fetchMovies() {
+            const { data } = await axios.get(
+                `${API_URL}&i=${imdbID}`
+            );
+            setData(data)
+            console.log(data)
+        }
+
         fetchMovies();
-    }, [title]);
+    }, [imdbID]);
 
     if (!data) {
         return <p>Loading...</p>;

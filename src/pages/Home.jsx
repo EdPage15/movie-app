@@ -1,6 +1,4 @@
-
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import MovieCard from '../components/MovieCard';
 import "../App.css"
@@ -8,9 +6,8 @@ import "../App.css"
 const API_URL = "https://www.omdbapi.com/?apikey=b561df05";
 
 const Home = () => {
-    const { title } = useParams();
     const [loading, setLoading] = useState(true);
-    const [searchTitle, setSearchTitle] = useState(title);
+    const [searchTitle, setSearchTitle] = useState('');
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     function onSearch() {
@@ -52,7 +49,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchMovies("fast");
-    }, [title]);
+    }, []);
 
     return (
         <>
@@ -88,7 +85,7 @@ const Home = () => {
             : 
                 <div className="container">
                     {filteredMovies.map((movie) => (
-                        <MovieCard movie={movie} />
+                        <MovieCard key={movie.imdbID} movie={movie} />
                     ))}
                 </div>
             }
